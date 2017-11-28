@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
-
 {% block content %}
-	<h1>Snack details for {{ snack.id }}</h1>
-	<h2> {{ snack.name }} Are {{ snack.kind }} </h2>
-	<a href="{{ url_for('edit', id=snack.id) }}">Edit this snack!</a>
-	<h2>Delete this snack</h2>
-	<form method="POST" action="{{ url_for('show', id=snack.id) }}?_method=DELETE">
-		<input type="submit" value="X">
-	</form>
+    {{snack.name}} are {{snack.kind}}
+    <a href="{{url_for('index')}}">See all</a>
+    <a href="{{url_for('edit', id=snack.id)}}">Edit</a>
+    <form action="{{url_for('show', id=snack.id)}}?_method=DELETE" method="POST">
+        <input type="submit" value="X">
+    </form>
 {% endblock %}
