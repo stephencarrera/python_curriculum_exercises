@@ -7,7 +7,7 @@
 		{% for field in form if field.widget.input_type != 'hidden' %}
 			<p>
 				{{field.label}}
-				{{field(placeholder='...', required=True)}}
+				{{field(class= "needs-validation", placeholder='...', required=True)}}
 				<span class='p-0 text-white bg-danger'>
 					{% if field.errors %}
 						{% for error in field.errors %}

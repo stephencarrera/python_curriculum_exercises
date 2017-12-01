@@ -2,7 +2,6 @@ from flask import Flask, request, redirect, url_for, render_template
 from flask_modus import Modus
 from flask_sqlalchemy import SQLAlchemy
 from flask_moment import Moment
-from datetime import datetime
 from forms import UserForm, MessageForm, DeleteForm
 import os
 
@@ -147,7 +146,6 @@ def messages_show(user_id, id):
 			return redirect(url_for('messages_index', user_id=user_id))
 	return render_template('messages/show.html', message=message)
 
-
 @app.errorhandler(404)
 def page_not_found(error):
 	return render_template('errors.html', error=error), 404
@@ -158,37 +156,3 @@ def server_error(error):
 
 if __name__ == '__main__':
 	app.run(debug=True, port=3000)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# flash to alert success
-# updated_on users and messages
-# client side verification key events http://parsleyjs.org/doc/examples/simple.html
