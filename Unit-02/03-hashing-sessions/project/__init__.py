@@ -6,6 +6,7 @@ from flask_bcrypt import Bcrypt
 import os
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 bcrypt = Bcrypt(app)
 app.config["DEBUG"] = True
 app.config["SQLALCHEMY_DATABASE_URI"] = 'postgres://localhost/users-messages-bcrypt'
