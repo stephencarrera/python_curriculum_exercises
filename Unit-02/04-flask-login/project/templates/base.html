@@ -5,9 +5,10 @@
 	<title>user-messages-login</title>
 	<link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
     {{ moment.include_moment() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
 	  <a class="navbar-brand" href="{{url_for('users.index')}}">user-messages-login</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
@@ -26,6 +27,16 @@
 	    </div>
 	  </div>
 	</nav>
+<!-- 	<div class="jumbotron">
+		<h1 class="display-3">Hello!</h1>
+		<p class="lead">Welcome to the user messaging system...now more secure</p>
+		<hr class="my-4">
+		<p>Send messages to your friends OR yourself! Now with MORE TAGS!</p>
+		<p class="lead">
+		  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+		</p>
+	</div> -->
+	
 		{% with messages = get_flashed_messages() %}
 			{% if messages %}
 				{% for message in messages %}
@@ -37,8 +48,7 @@
 
 		{% block content %}
 		{% endblock %}
-
-		
+			
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"

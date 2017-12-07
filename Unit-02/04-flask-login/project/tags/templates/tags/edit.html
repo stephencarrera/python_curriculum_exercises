@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<h1>Edit the {{tag.text}} Tag</h1>
+	<h1>Edit the "{{tag.text}}" Tag</h1>
     <form method="POST" action="{{url_for('tags.show', id=tag.id)}}?_method=PATCH">
         {{ form.csrf_token }}
         <p>

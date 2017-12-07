@@ -19,4 +19,9 @@
 		{% endfor %}
 		<input type="submit" class="btn btn-primary btn-sm col-4" value='Edit'>
 	</form>
+	<form method="POST" action="{{url_for('users.show', id=user.id)}}?_method=DELETE">
+		{{  delete_form.csrf_token }}
+		<input type="submit" class="btn btn-danger btn-sm col-4" value="Delete {{user.first_name.title()}}">
+		
+	</form>
 {% endblock %}

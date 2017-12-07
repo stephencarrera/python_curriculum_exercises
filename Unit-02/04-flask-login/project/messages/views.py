@@ -34,7 +34,6 @@ def index(user_id):
 
 @messages_blueprint.route('/new')
 @login_required
-@ensure_correct_user
 def new(user_id):
 	form = MessageForm()
 	form.set_choices()

@@ -16,8 +16,7 @@ users_blueprint = Blueprint(
 @login_required
 @users_blueprint.route('/')
 def index():
-	delete_form = DeleteForm()
-	return render_template('users/index.html', users=User.query.all(), delete_form=delete_form)
+	return render_template('users/index.html', users=User.query.all())
 
 
 @users_blueprint.route('/signup', methods=["GET","POST"])
@@ -70,13 +69,15 @@ def login():
 def edit(id):
 	found_user = User.query.get(id)
 	user_form = UserForm(obj=found_user)
-	return render_template('users/edit.html', user=found_user, form=user_form)
+	delete_form = DeleteForm()
+	return render_template('users/edit.html', user=found_user, form=user_form, delete_form=delete_form)
 
 @users_blueprint.route('/<int:id>', methods=["GET", "PATCH", "DELETE"])
 @login_required
 @ensure_correct_user
 def show(id):
 	found_user = User.query.get(id)
+	delete_form = DeleteForm()
 	if request.method == b"PATCH":
 		form = UserForm(request.form)
 		if form.validate():
@@ -90,7 +91,7 @@ def show(id):
 			db.session.commit()
 			flash('User Updated!')
 			return redirect(url_for('users.index')) 
-		return render_template('users/edit.html', user=found_user, form=form)
+		return render_template('users/edit.html', user=found_user, form=form, delete_form=delete_form)
 	if request.method ==b"DELETE":
 		delete_form = DeleteForm(request.form)
 		if delete_form.validate():
